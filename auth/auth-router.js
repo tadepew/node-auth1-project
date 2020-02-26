@@ -12,6 +12,7 @@ router.post("/register", (req, res) => {
 
   Users.add(user)
     .then(saved => {
+      req.session.loggedIn = true; //this lets you login on registration instead of logging in after registering!!!!
       res.status(201).json(saved);
     })
     .catch(error => {
